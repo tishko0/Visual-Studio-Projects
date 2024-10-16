@@ -1,3 +1,4 @@
+// Made by Tonkisa, Iveta go vkara
 // Sample data for assignments and grades
         const assignments = {
             "Grade 1": [],

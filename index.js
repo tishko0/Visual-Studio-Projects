@@ -1,16 +1,15 @@
+const { Client } = require('pg');
 
-const express = require('express');
-
-const app = express();
-
-// Определете порт
-const port = 3000;
-
-
-app.get('/', (req, res) => {
-  res.send('Hello, Express!');
+const client = new Client({
+  host: 'localhost',
+  port: 5432,
+  user: 'Tonkisa69',
+  password: '123456',
+  database: 'Users'
 });
-~
-app.listen(port, () => {
-  console.log(`Сървърът работи на http://localhost:${port}`);
-});
+
+client.connect()
+  .then(() => console.log("Connected to PostgreSQL"))
+  .catch(err => console.error('Connection error', err.stack))
+  .finally(() => client.end());
+

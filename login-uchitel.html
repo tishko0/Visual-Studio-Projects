@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход / Регистрация Ученик</title>
+    <title>Вход / Регистрация Учител</title>
     <style>
         /* General Styling */
         body {
@@ -50,7 +50,7 @@
         }
 
         /* Input Fields */
-        input[type="uchenik-id"], input[type="text"], input[type="email"], input[type="password"] {
+        input[type="uchitel-id"],input[type="text"], input[type="email"], input[type="password"] {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
@@ -62,7 +62,7 @@
             transition: all 0.3s ease;
         }
 
-        input[type="uchenik-id"]:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+        input[type="uchitel-id"]:focus,input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
             border: 2px solid #0072ff;
             box-shadow: 0 0 15px rgba(0, 114, 255, 0.5); /* Subtle glow */
             background-color: #fff;
@@ -191,10 +191,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Вход / Регистрация Ученик</h1>
+        <h1>Вход / Регистрация Учител</h1>
         <form>
-            <label for="uchenik-id">Ученик ID:</label>
-            <input type="uchenik-id" id="uchenik-id" name="uchenik-id" required>
+            <label for="uchitel-id">Учител ID:</label>
+            <input type="uchitel-id" id="uchitel-id" name="uchitel-id" required>
 
             <label for="email">Имейл:</label>
             <input type="email" id="email" name="email" required>

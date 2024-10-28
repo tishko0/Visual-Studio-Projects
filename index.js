@@ -1,69 +1,80 @@
-const { Client } = require('pg');
-
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const { Pool } = require('pg');
+
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-// Middleware за парсване на form данни
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Статична папка за публични файлове
-app.use(express.static(path.join(__dirname)));
-
-// Показва login.html когато посетите началната страница
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,  'loginpage2.0.html'));
+// Configure the PostgreSQL connection
+const pool = new Pool({
+    user: 'Tonkisa69',
+    host: 'localhost',
+    database: 'myapp',
+    password: '123456',
+    port: 5432
 });
 
-// Обработва входната форма
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
+app.use(bodyParser.json());
 
-    // Проверка за потребител и парола (примерен код)
-    if (username === 'teacher' && password === '1234') {
-        res.redirect('/teachers');
-    } else {
-        res.send('Невалидно потребителско име или парола!');
+// Login route
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+        const user = result.rows[0];
+
+        if (!user) {
+            return res.status(400).json({ message: 'Невалиден имейл или парола.' });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: 'Невалиден имейл или парола.' });
+        }
+
+        res.json({ email: user.email });
+    } catch (error) {
+        res.status(500).json({ message: 'Вътрешна грешка на сървъра.' });
     }
 });
 
-// Показва teachers.html
-app.get('/teachers', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Teachers.html'));
+// Registration route
+app.post('/register', async (req, res) => {
+    const { nickname, email, password } = req.body;
+
+    try {
+        // Check if the user already exists
+        const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+        if (existingUser.rows.length > 0) {
+            return res.status(400).json({ message: 'Потребител с този имейл вече съществува.' });
+        }
+
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Insert the new user into the database
+        const result = await pool.query(
+            'INSERT INTO users (nickname, email, password) VALUES ($1, $2, $3) RETURNING *',
+            [nickname, email, hashedPassword]
+        );
+
+        const newUser = result.rows[0];
+        res.json({ nickname: newUser.nickname, email: newUser.email });
+    } catch (error) {
+        res.status(500).json({ message: 'Вътрешна грешка на сървъра.' });
+    }
 });
 
-// Стартира сървъра
-app.listen(port, () => {
-    console.log(`Сървърът работи на http://localhost:${port}`);
-});
-const { Client } = require('pg');
-
-// Database connection details
-const client = new Client({
-  user: 'Tonkisa69',         
-  host: 'localhost',             
-  database: 'Users1', 
-  password: '123456',     
-  port: 5432,                     
+// Forgot Password route
+app.post('/forgot-password', async (req, res) => {
+    const { email } = req.body;
+    // Implement email sending logic here
+    res.json({ message: 'Инструкциите за нулиране на паролата са изпратени.' });
 });
 
-// Function to connect to the PostgreSQL database
-async function connectToDatabase() {
-  try {
-    await client.connect(); // Connect to the database
-    console.log('Connected to PostgreSQL database successfully');
-    
-    // Perform a simple query (optional)
-    const res = await client.query('SELECT NOW()'); // Query to get current date and time
-    console.log('Current Time:', res.rows[0]);
-
-  } catch (err) {
-    console.error('Error connecting to the database', err);
- 
-  }
-}
-
-// Execute the connection function
-connectToDatabase();
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

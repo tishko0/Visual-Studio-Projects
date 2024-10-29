@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Portal</title>
+    <head>
+        <link rel="stylesheet" href="homeworkstyle.css">
+      </head>
+      <head>
+        <script src="homeworkscript.js"></script>
+      </head>
+</head>
+<body>
+    <h1>Homework Portal</h1>
+    
+    <!-- Description of user roles -->
+    <h2>User Roles and Permissions</h2>
+    <h3>I. Students</h3>
+    <p>Students are the primary users of the platform who submit homework assignments and view their grades.</p>
+    
+    <h3>What Students Cannot Do:</h3>
+    <ul>
+        <li>Create or modify homework assignments.</li>
+        <li>View grades or submissions of other students.</li>
+        <li>Perform administrative tasks such as user management or grade assignments.</li>
+    </ul>
+    
+    <!-- Form to submit homework -->
+    <h2>Submit Homework</h2>
+    <div class="form-container">
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="studentName">Name:</label>
+                <input type="text" id="studentName" name="studentName" required>
+            </div>
+            <div class="form-group">
+            <label for="homeworkFile">Upload Homework:</label>
+            
+            <input type="file" id="homeworkFile" name="homeworkFile" accept=".pdf,.doc,.docx" required>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Section to view and download homework assignments -->
+    <h2>View Homework</h2>
+    <ul>
+        <li><a href="path/to/homework1.pdf" download>Homework Assignment 1</a></li>
+        <li><a href="path/to/homework2.pdf" download>Homework Assignment 2</a></li>
+        <li><a href="path/to/homework3.pdf" download>Homework Assignment 3</a></li>
+    </ul>
+
+    <!-- Section to check grades and feedback -->
+    <h2>Check Grades and Feedback</h2>
+    <table>
+        <tr>
+            <th>Assignment</th>
+            <th>Grade</th>
+            <th>Feedback</th>
+        </tr>
+        <tr>
+            <td>Homework Assignment 1</td>
+            <td>A</td>
+            <td>Great job!</td>
+        </tr>
+        <tr>
+            <td>Homework Assignment 2</td>
+            <td>B</td>
+            <td>Good effort, but there's room for improvement.</td>
+        </tr>
+        <tr>
+            <td>Homework Assignment 3</td>
+            <td>A-</td>
+            <td>Well done, just watch out for minor errors.</td>
+        </tr>
+    </table>
+</body>
+</html>

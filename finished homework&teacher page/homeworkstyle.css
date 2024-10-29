@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+    padding: 20px;
+    background: radial-gradient(circle, rgba(0,114,255,1) 0%, rgba(0,198,255,1) 100%);
+    color: white;
+    margin: 0;
+    font-size: 2em;
+}
+h2 {
+    color: #333;
+    font-size: 1.5em;
+    text-align: center;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+form {
+    max-width: 600px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+label, input, ul, table {
+    display: block;
+    width: 80%;
+    margin-bottom: 4px;
+}
+input[type="text"], input[type="file"] {
+    padding: 2px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+input[type="file"] {
+    margin-left: 1px;
+}
+input[type="submit"] {
+    background-color:rgba(0,114,255,1);
+    color: white;
+    padding: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+input[type="submit"]:hover {
+    background-color: rgba(0,198,255,1);
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    align-items: center;
+}
+ul li {
+    max-width: 400px;
+    background-color: #fff;
+    margin: 1px 0;
+    padding: 1px;
+    border: none;
+    border-radius: 5px;
+    
+    
+}
+ul li a {
+    text-decoration: none;
+    color: blue;
+}
+ul li a:hover {
+    text-decoration: underline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: rgba(0,114,255,1) ;
+}

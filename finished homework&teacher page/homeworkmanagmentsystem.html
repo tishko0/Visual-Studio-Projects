@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+     
+
+    <head>
+        <link rel="stylesheet" href="teachersstyle.css">
+      </head>
+      <head>
+        <script src="teachersscript.js"></script>
+      </head>
+
+</head>
+<body>
+    <h1>Homework Management System</h1>
+    <form>
+        <div class="btn-container">
+            <button class="btn btn1" type="button" onclick="showContainer('homeworkassigment')">Create Homework Assignment</button>
+            <button class="btn btn2" type="button" onclick="showContainer('gradehomework')">Grade Homework</button>
+            <button class="btn btn3" type="button" onclick="showContainer('gradingreport')">Generate Grading Report</button>
+            <button class="btn btn4" type="button" onclick="showContainer('viewsubmissions')">View Submissions</button>
+            <button class="btn btn5" type="button" onclick="showContainer('gradesofassigments')">Modify Grades of Assigments</button>
+            <button class="btn btn6" type="button" onclick="showContainer('accessstudentinformation')">Access Student Information</button>
+        </div>
+    </form>
+
+    <!-- Section to Create Homework Assignments -->
+    <div id="homeworkassigment" class="container">
+        <div class="box"></div>
+        <h2>Create Homework Assignment</h2>
+        <form id="homeworkForm">
+            <label for="class">Class:</label>
+            <select id="class" name="class" required>
+                <option value="" disabled selected>Select a class</option>
+                <option value="Grade 1">Grade 1</option>
+                <option value="Grade 2">Grade 2</option>
+                <option value="Grade 3">Grade 3</option>
+                <option value="Grade 4">Grade 4</option>
+                <option value="Grade 5">Grade 5</option>
+                <option value="Grade 6">Grade 6</option>
+                <option value="Grade 7">Grade 7</option>
+                <option value="Grade 8">Grade 8</option>
+                <option value="Grade 9">Grade 9</option>
+                <option value="Grade 10">Grade 10</option>
+                <option value="Grade 11">Grade 11</option>
+                <option value="Grade 12">Grade 12</option>
+            </select>
+
+            <label for="title">Assignment Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="instructions">Instructions:</label>
+            <textarea id="instructions" name="instructions" rows="4" required></textarea>
+
+            <label for="deadline">Deadline:</label>
+            <input type="date" id="deadline" name="deadline" required>
+
+            <button type="submit">Create Assignment</button>
+        </form>
+        <div id="assignmentOutput"></div>
+    </div>
+
+    <!-- Section to Grade Homework -->
+    <div id="gradehomework" class="container">
+        <div class="box"></div>
+        <h2>Grade Homework</h2>
+        <form id="gradeForm">
+            <label for="assignmentSelect">Select Assignment:</label>
+            <select id="assignmentSelect" name="assignmentSelect" required>
+                <option value="" disabled selected>Select an assignment</option>
+                <option value="Grade 1 - Math Homework">Grade 1 - Math Homework</option>
+                <option value="Grade 2 - Science Project">Grade 2 - Science Project</option>
+                <option value="Grade 3 - Reading Assignment">Grade 3 - Reading Assignment</option>
+                <option value="Grade 4 - History Essay">Grade 4 - History Essay</option>
+                <option value="Grade 5 - Art Project">Grade 5 - Art Project</option>
+                <option value="Grade 6 - Geography Project">Grade 6 - Geography Project</option>
+                <option value="Grade 7 - Literature Essay">Grade 7 - Literature Essay</option>
+                <option value="Grade 8 - Chemistry Lab Report">Grade 8 - Chemistry Lab Report</option>
+                <option value="Grade 9 - Biology Research">Grade 9 - Biology Research</option>
+                <option value="Grade 10 - Physics Experiment">Grade 10 - Physics Experiment</option>
+                <option value="Grade 11 - Advanced Math Assignment">Grade 11 - Advanced Math Assignment</option>
+                <option value="Grade 12 - Final Year Project">Grade 12 - Final Year Project</option>
+            </select>
+
+            <label for="grade">Grade (1-12):</label>
+            <input type="number" id="grade" name="grade" min="1" max="12" required>
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+            <button type="submit">Submit Grade</button>
+        </form>
+        <div id="gradeOutput" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Section to Report Grades -->
+    <div id="gradingreport" class="container">
+        <div class="box"></div>
+        <h2>Generate Grading Report</h2>
+        <form id="reportForm">
+            <label for="reportClass">Select Class:</label>
+            <select id="reportClass" name="reportClass" required>
+                <option value="Grade 1">Grade 1</option>
+                <option value="Grade 2">Grade 2</option>
+                <option value="Grade 3">Grade 3</option>
+                <option value="Grade 4">Grade 4</option>
+                <option value="Grade 5">Grade 5</option>
+                <option value="Grade 6">Grade 6</option>
+                <option value="Grade 7">Grade 7</option>
+                <option value="Grade 8">Grade 8</option>
+                <option value="Grade 9">Grade 9</option>
+                <option value="Grade 10">Grade 10</option>
+                <option value="Grade 11">Grade 11</option>
+                <option value="Grade 12">Grade 12</option>
+            </select>
+
+            <button type="submit">Generate Report</button>
+        </form>
+        <div id="reportOutput" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Section to View Submissions -->
+    <div id="viewsubmissions" class="container">
+        <div class="box"></div>
+        <h2>View Submissions</h2>
+        <form id="viewSubmissionsForm">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+            <button type="submit">View Submissions</button>
+        </form>
+        <div id="submissionsOutput" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Section to Modify Grades -->
+    <div id="gradesofassigments" class="container">
+        <div class="box"></div>
+        <h2>Modify Grades of Assignments</h2>
+        <form id="modifyGradesForm">
+            <label for="modifyAssignmentSelect">Select Assignment:</label>
+            <select id="modifyAssignmentSelect" name="modifyAssignmentSelect" required>
+                <option value="" disabled selected>Select an assignment</option>
+                <option value="Grade 1 - Math Homework">Grade 1 - Math Homework</option>
+                <option value="Grade 2 - Science Project">Grade 2 - Science Project</option>
+                <option value="Grade 3 - Reading Assignment">Grade 3 - Reading Assignment</option>
+                <option value="Grade 4 - History Essay">Grade 4 - History Essay</option>
+                <option value="Grade 5 - Art Project">Grade 5 - Art Project</option>
+                <option value="Grade 6 - Geography Project">Grade 6 - Geography Project</option>
+                <option value="Grade 7 - Literature Essay">Grade 7 - Literature Essay</option>
+                <option value="Grade 8 - Chemistry Lab Report">Grade 8 - Chemistry Lab Report</option>
+                <option value="Grade 9 - Biology Research">Grade 9 - Biology Research</option>
+                <option value="Grade 10 - Physics Experiment">Grade 10 - Physics Experiment</option>
+                <option value="Grade 11 - Advanced Math Assignment">Grade 11 - Advanced Math Assignment</option>
+                <option value="Grade 12 - Final Year Project">Grade 12 - Final Year Project</option>
+            </select>
+
+            <label for="newGrade">New Grade (1-12):</label>
+            <input type="number" id="newGrade" name="newGrade" min="1" max="12" required>
+
+            <label for="newFeedback">New Feedback:</label>
+            <textarea id="newFeedback" name="newFeedback" rows="4" required></textarea>
+
+            <button type="submit">Modify Grade</button>
+        </form>
+        <div id="modifyGradeOutput" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Section to Access Student Information -->
+    <div id="accessstudentinformation" class="container">
+        <div class="box"></div>
+        <h2>Access Student Information</h2>
+        <form id="studentInfoForm">
+            <label for="studentSelect">Select Student:</label>
+            <select id="studentSelect" name="studentSelect" required>
+                <option value="" disabled selected>Select a student</option>
+                <option value="John Doe">John Doe</option>
+                <option value="Michael Brown">Michael Brown</option>
+                <option value="James Garcia">James Garcia</option>
+                <option value="Daniel Wright">Daniel Wright</option>
+                <option value="Emily Johnson">Emily Johnson</option>
+                <option value="Sarah Wilson">Sarah Wilson</option>
+                <option value="Patricia Lee">Patricia Lee</option>
+                <option value="Linda King">Linda King</option>
+            </select>
+
+            <button type="submit">View Student Info</button>
+        </form>
+        <div id="studentInfoOutput" style="margin-top: 20px;"></div>
+    </div>
+</body>
+</html>
